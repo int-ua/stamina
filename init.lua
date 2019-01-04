@@ -128,7 +128,6 @@ function set_sprinting(name, sprinting)
 	player:set_physics_override({
 		speed = def.speed,
 		jump = def.jump,
-		gravity = def.gravity
 	})
 end
 
