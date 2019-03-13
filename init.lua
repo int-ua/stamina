@@ -137,6 +137,8 @@ local health_timer = 0
 local action_timer = 0
 
 local function stamina_globaltimer(dtime)
+	local t0 = minetest.get_us_time()
+
 	stamina_timer = stamina_timer + dtime
 	health_timer = health_timer + dtime
 	action_timer = action_timer + dtime
@@ -239,6 +241,12 @@ local function stamina_globaltimer(dtime)
 		end
 
 		health_timer = 0
+	end
+
+	local t1 = minetest.get_us_time()
+	local diff = t1 - t0
+	if diff > 50000 then
+		minetest.log("warning", "[stamina] globalstep took " .. diff .. " us")
 	end
 end
 
